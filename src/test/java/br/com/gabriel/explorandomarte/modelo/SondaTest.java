@@ -1,33 +1,39 @@
 package br.com.gabriel.explorandomarte.modelo;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import br.com.gabriel.explorandomarte.modelo.enums.Direcao;
 
 public class SondaTest {
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	@Before
-	public void setUp() throws Exception {
-	}
-
 	@Test
 	public void deveSerPossivelMudarDirecaoDeUmaSonda() {
 		
-		Sonda sonda = new Sonda(Direcao.NORTE);
-		sonda.virarParaEsquerda();
-		sonda.virarParaEsquerda();
+		Sonda sonda = new Sonda(0, 0, Direcao.NORTE);
+		sonda.viraParaEsquerda();
+		sonda.viraParaEsquerda();
 		assertEquals(Direcao.SUL, sonda.getDirecao());
 		
-		sonda.virarParaDireita();
-		assertEquals(Direcao.OESTE, sonda.getDirecao());
+		sonda.viraParaDireita();
+		assertEquals(Direcao.OESTE, sonda.getDirecao());			
+	}
+	
+	@Test
+	public void deveMovimentarSondaNaDirecaoQueASondaEsta() throws Exception {
+		
+		Sonda sonda = new Sonda(1, 2, Direcao.LESTE);
+		sonda.movimenta();
+		assertEquals(2, sonda.getPosicaoX());
+		assertEquals(2, sonda.getPosicaoY());
+		
+		sonda.viraParaDireita();
+		sonda.movimenta();
+		sonda.movimenta();
+		sonda.movimenta();
+		assertEquals(2, sonda.getPosicaoX());
+		assertEquals(-1, sonda.getPosicaoY());
 	}
 
 }

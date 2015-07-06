@@ -2,10 +2,10 @@ package br.com.gabriel.explorandomarte.modelo.enums;
 
 public enum Direcao {
 
-	NORTE,
-	SUL,
-	LESTE,
-	OESTE;
+	NORTE(1),
+	SUL(-1),
+	LESTE(1),
+	OESTE(-1);
 	
 	static {
 		NORTE.configuraDirecoesAoLado(OESTE, LESTE);
@@ -16,6 +16,11 @@ public enum Direcao {
 	
 	private Direcao direcaoAEsquerda;
 	private Direcao direcaoADireita;
+	private final int incrementoPosicao;
+	
+	private Direcao(int incrementoPosicao) {
+		this.incrementoPosicao = incrementoPosicao;
+	}
 	
 	public Direcao getDirecaoAEsquerda() {
 		return direcaoAEsquerda;
@@ -28,5 +33,9 @@ public enum Direcao {
 	private void configuraDirecoesAoLado(Direcao direcaoAEsquerda, Direcao direcaoADireita) {
 		this.direcaoAEsquerda = direcaoAEsquerda;
 		this.direcaoADireita = direcaoADireita;
+	}
+
+	public int getIncrementoPosicao() {
+		return incrementoPosicao;
 	}
 }

@@ -6,12 +6,16 @@ import br.com.gabriel.explorandomarte.modelo.enums.Direcao;
 public class Sonda {
 
 	private Direcao direcao;
+	private int posicaoX;
+	private int posicaoY;
 
-	public Sonda(Direcao direcaoInicial) {
+	public Sonda(int posicaoX, int posicaoY, Direcao direcaoInicial) {
+		this.posicaoX = posicaoX;
+		this.posicaoY = posicaoY;
 		this.direcao = direcaoInicial;
 	}
 
-	public void virarParaEsquerda() {
+	public void viraParaEsquerda() {
 
 		direcao = direcao.getDirecaoAEsquerda();
 	}
@@ -20,9 +24,26 @@ public class Sonda {
 		return direcao;
 	}
 
-	public void virarParaDireita() {
+	public void viraParaDireita() {
 		
 		direcao = direcao.getDirecaoADireita();
+	}
+
+	public void movimenta() {
+		
+		if (Direcao.LESTE.equals(direcao) || Direcao.OESTE.equals(direcao)){
+			posicaoX += direcao.getIncrementoPosicao();
+		} else {
+			posicaoY += direcao.getIncrementoPosicao();
+		}
+	}
+
+	public int getPosicaoX() {
+		return posicaoX;
+	}
+
+	public int getPosicaoY() {
+		return posicaoY;
 	}
 
 }
