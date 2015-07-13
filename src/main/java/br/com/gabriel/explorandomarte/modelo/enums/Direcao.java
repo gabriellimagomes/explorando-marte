@@ -1,11 +1,18 @@
 package br.com.gabriel.explorandomarte.modelo.enums;
 
+import br.com.gabriel.explorandomarte.modelo.PosicionadorSondas;
+import br.com.gabriel.explorandomarte.modelo.Sonda;
+import br.com.gabriel.explorandomarte.modelo.VerificadorMovimento;
+import br.com.gabriel.explorandomarte.modelo.VerificadorMovimentoLeste;
+import br.com.gabriel.explorandomarte.modelo.VerificadorMovimentoOeste;
+import br.com.gabriel.explorandomarte.modelo.VerificadorMovimentoSul;
+
 public enum Direcao {
 
-	NORTE(1),
-	SUL(-1),
-	LESTE(1),
-	OESTE(-1);
+	NORTE(1, new VerificadorMovimentoNorte()),
+	SUL(-1, new VerificadorMovimentoSul()),
+	LESTE(1, new VerificadorMovimentoLeste()),
+	OESTE(-1, new VerificadorMovimentoOeste());
 	
 	static {
 		NORTE.configuraDirecoesAoLado(OESTE, LESTE);
@@ -17,9 +24,11 @@ public enum Direcao {
 	private Direcao direcaoAEsquerda;
 	private Direcao direcaoADireita;
 	private final int incrementoPosicao;
+	private final VerificadorMovimento verificadorMovimento;
 	
-	private Direcao(int incrementoPosicao) {
+	private Direcao(int incrementoPosicao, VerificadorMovimento verificadorMovimento) {
 		this.incrementoPosicao = incrementoPosicao;
+		this.verificadorMovimento = verificadorMovimento;
 	}
 	
 	public Direcao getDirecaoAEsquerda() {
@@ -37,5 +46,10 @@ public enum Direcao {
 
 	public int getIncrementoPosicao() {
 		return incrementoPosicao;
+	}
+
+	public boolean isPossivelMovimentar(Sonda sonda, PosicionadorSondas posicionadorSondas) {
+		
+		return verificadorMovimento.isPossivelMovimentar(sonda, posicionadorSondas);
 	}
 }

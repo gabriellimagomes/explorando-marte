@@ -1,0 +1,11 @@
+package br.com.gabriel.explorandomarte.modelo.exception;
+
+public class PosicaoSondaForaDoPlanaltoException extends RuntimeException {
+
+	private static final long serialVersionUID = -4532537498216782073L;
+
+	public PosicaoSondaForaDoPlanaltoException(int posicaoX, int posicaoY, int posicaoLimiteX, int posicaoLimiteY) {
+		
+		super(String.format("Posicao da sonda: %s, %s | Posicao superior direita do planalto: %s, %s", posicaoX, posicaoY, posicaoLimiteX, posicaoLimiteY));
+	}
+}
