@@ -11,9 +11,9 @@ import br.com.gabriel.explorandomarte.modelo.exception.PosicaoSondaForaDoPlanalt
 public class PosicionadorSondasTest {
 
 	private PosicionadorSondas posicionadorSondas;
-	private ExecutorMovimentos virarDireita;
-	private ExecutorMovimentos virarEsquerda;
-	private ExecutorMovimentos movimenta;
+	private ExecutorMovimento virarDireita;
+	private ExecutorMovimento virarEsquerda;
+	private ExecutorMovimento movimenta;
 
 	@Before
 	public void setUp() {

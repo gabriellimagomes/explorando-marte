@@ -11,7 +11,7 @@ public class PosicionadorSondas {
 		this.posicaoLimiteY = posicaoLimiteY;
 	}
 
-	public void movimentaSonda(Sonda sonda, ExecutorMovimentos executorMovimentos) {
+	public void movimentaSonda(Sonda sonda, ExecutorMovimento executorMovimentos) {
 		
 		executorMovimentos.executaMovimento(sonda);
 	}

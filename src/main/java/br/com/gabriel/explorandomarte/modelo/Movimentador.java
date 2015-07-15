@@ -2,7 +2,7 @@ package br.com.gabriel.explorandomarte.modelo;
 
 import br.com.gabriel.explorandomarte.modelo.exception.PosicaoSondaForaDoPlanaltoException;
 
-public class Movimentador implements ExecutorMovimentos {
+public class Movimentador implements ExecutorMovimento {
 
 	private final PosicionadorSondas posicionadorSondas;
 
