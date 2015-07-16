@@ -5,28 +5,28 @@ import br.com.gabriel.explorandomarte.modelo.Sonda;
 
 public enum Direcao {
 
-	NORTE(1) {
+	NORTE(1, "N") {
 		@Override
 		public boolean isPossivelMovimentar(Sonda sonda, PosicionadorSondas posicionadorSondas) {			
 			
 			return sonda.getPosicaoY() < posicionadorSondas.getPosicaoLimiteY();
 		}
 	},
-	SUL(-1) {
+	SUL(-1, "S") {
 		@Override
 		public boolean isPossivelMovimentar(Sonda sonda, PosicionadorSondas posicionadorSondas) {
 
 			return sonda.getPosicaoY() > 0;
 		}
 	},
-	LESTE(1) {
+	LESTE(1, "E") {
 		@Override
 		public boolean isPossivelMovimentar(Sonda sonda, PosicionadorSondas posicionadorSondas) {
 
 			return sonda.getPosicaoX() < posicionadorSondas.getPosicaoLimiteX();
 		}
 	},
-	OESTE(-1) {
+	OESTE(-1, "W") {
 		@Override
 		public boolean isPossivelMovimentar(Sonda sonda, PosicionadorSondas posicionadorSondas) {
 			
@@ -44,9 +44,11 @@ public enum Direcao {
 	private Direcao direcaoAEsquerda;
 	private Direcao direcaoADireita;
 	private final int incrementoPosicao;
+	private final String letra;
 	
-	private Direcao(int incrementoPosicao) {
+	private Direcao(int incrementoPosicao, String letra) {
 		this.incrementoPosicao = incrementoPosicao;
+		this.letra = letra;
 	}
 	
 	public Direcao getDirecaoAEsquerda() {
@@ -61,10 +63,27 @@ public enum Direcao {
 		return incrementoPosicao;
 	}
 
+	public String getLetra() {
+		return letra;
+	}
+	
+	public static Direcao getByLetra(String letra) {
+		
+		for (Direcao direcao : Direcao.values()) {
+			
+			if (direcao.getLetra().equalsIgnoreCase(letra)){
+				return direcao;
+			}
+		}
+		
+		return null;
+	}
+
 	public abstract boolean isPossivelMovimentar(Sonda sonda, PosicionadorSondas posicionadorSondas);
 	
 	private void configuraDirecoesAoLado(Direcao direcaoAEsquerda, Direcao direcaoADireita) {
 		this.direcaoAEsquerda = direcaoAEsquerda;
 		this.direcaoADireita = direcaoADireita;
 	}
+
 }
