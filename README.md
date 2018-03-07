@@ -1,2 +1,2 @@
 # explorando-marte
-Projeto teste para Elo 7
+Projeto para posicionar sondas
