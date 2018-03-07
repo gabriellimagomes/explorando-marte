@@ -4,5 +4,5 @@ import br.com.gabriel.explorandomarte.modelo.exception.PosicaoSondaForaDoPlanalt
 
 public interface ExecutorMovimento {
 
-	void executaMovimento(Sonda sonda) throws PosicaoSondaForaDoPlanaltoException;
+	void executaMovimento(Sonda sonda, PosicionadorSondas posicionadorSondas) throws PosicaoSondaForaDoPlanaltoException;
 }

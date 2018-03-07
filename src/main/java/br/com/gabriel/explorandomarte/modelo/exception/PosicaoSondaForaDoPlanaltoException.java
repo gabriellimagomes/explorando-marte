@@ -6,6 +6,6 @@ public class PosicaoSondaForaDoPlanaltoException extends RuntimeException {
 
 	public PosicaoSondaForaDoPlanaltoException(int posicaoX, int posicaoY, int posicaoLimiteX, int posicaoLimiteY) {
 		
-		super(String.format("Posicao da sonda: %s, %s | Posicao superior direita do planalto: %s, %s", posicaoX, posicaoY, posicaoLimiteX, posicaoLimiteY));
+		super(String.format("Posicao da sonda: X: %s, Y: %s | Posicao superior direita do planalto: X: %s, Y: %s", posicaoX, posicaoY, posicaoLimiteX, posicaoLimiteY));
 	}
 }

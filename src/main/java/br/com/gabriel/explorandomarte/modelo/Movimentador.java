@@ -4,13 +4,7 @@ import br.com.gabriel.explorandomarte.modelo.exception.PosicaoSondaForaDoPlanalt
 
 public class Movimentador implements ExecutorMovimento {
 
-	private final PosicionadorSondas posicionadorSondas;
-
-	public Movimentador(PosicionadorSondas posicionadorSondas) {
-		this.posicionadorSondas = posicionadorSondas;
-	}
-
-	public void executaMovimento(Sonda sonda) {
+	public void executaMovimento(Sonda sonda, PosicionadorSondas posicionadorSondas) {
 		
 		if (sonda.getDirecao().isPossivelMovimentar(sonda, posicionadorSondas)){
 			

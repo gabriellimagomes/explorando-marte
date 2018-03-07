@@ -13,7 +13,7 @@ public class PosicionadorSondas {
 
 	public void movimentaSonda(Sonda sonda, ExecutorMovimento executorMovimentos) {
 		
-		executorMovimentos.executaMovimento(sonda);
+		executorMovimentos.executaMovimento(sonda, this);
 	}
 
 	public int getPosicaoLimiteX() {
